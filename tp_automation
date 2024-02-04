@@ -1,0 +1,13 @@
+# pip install selenium webdriver_manager openpyxl
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from openpyxl import load_workbook
+
+def translate_to_english(driver):
+    pass
+
+def take_screenshot(driver, file_name):
+    driver.save_screenshot(file_name)
