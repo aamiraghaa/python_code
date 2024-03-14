@@ -1,0 +1,14 @@
+# Python code that finds a 4 digit number which is the mirrored version of the same number multiplied by 4
+
+x = 1
+y = 1
+z = 1
+
+while True:
+    x += 1
+    y = x*4
+    z = str(y) [::-1]
+#    print(x, " - ", y, " - ",z)
+    if str(x) == str(z) and len(str(x)) == 4:
+        break
+print ("Finish, needed number is: ", x)
