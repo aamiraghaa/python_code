@@ -1,0 +1,18 @@
+class vehicle:
+    def __init__(self, brand, model, ban_type, colour, plate_number, mileage, mnf_date):
+        self.brand = brand
+        self.model = model
+        self.ban_type = ban_type
+        self.colour = colour
+        self.plate_number = plate_number
+        self.mileage = mileage
+        self.mnf_date = mnf_date
+        
+    def vehicle_used(self, mileage_gone):
+        self.mileage += mileage_gone
+        print("Vehicle " + self.plate_number + " ran " + str(mileage_gone) + ". Current mileage is " + str(self.mileage))
+        
+        
+car_1 = vehicle("Hyundai", "Santa Fe", "SUV", "Black", "50 - CC - 223", 120000, "2009")
+
+car_1.vehicle_used(250)
