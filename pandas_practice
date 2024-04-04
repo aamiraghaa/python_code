@@ -1,0 +1,32 @@
+import pandas as pd
+
+data = {
+    'id': [1, 2, 3, 4, 5],
+    'date': ['2015-01-01', '2015-01-02', '2015-01-03', '2015-01-04', '2015-01-05'],
+    'temperature': ['20', '25', '21', '30', '29']
+}
+
+
+
+class DataFrameHandler:
+    def __init__(self, data):
+        self.df = pd.DataFrame(data)
+    
+    def show_data(self):
+        return self.df
+    
+    def raising_temperatures(self):
+        occurrences = []
+        
+        for index, row in self.df.iterrows():
+            current_temp = int(row['temperature'])
+            next_temp = int(self.df.loc[index + 1, 'temperature']) if index < len(self.df) - 1 else None
+            if next_temp is not None  and next_temp > current_temp:
+                occurrences.append(self.df.loc[index + 1, 'date'])
+        return occurrences
+
+
+data_handler = DataFrameHandler(data)
+
+
+print(data_handler.raising_temperatures())
