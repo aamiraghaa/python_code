@@ -1,0 +1,35 @@
+import pandas as pd
+
+trips = {
+    'id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'client_id': [1, 2, 3, 4, 1, 2, 3, 2, 3, 4],
+    'driver_id': [10, 11, 12, 13, 10, 11, 12, 12, 10, 13],
+    'city_id' : [1, 1, 6, 6, 1, 6, 6, 12, 12, 12],
+    'status' : ['completed', 'completed', 'completed', 'completed', 'completed', 'completed', 'completed', 'completed', 'completed', 'completed'],
+    'request_at' : ['2013-10-01', '2013-10-01', '2013-10-01', '2013-10-01', '2013-10-02', '2013-10-02', '2013-10-02', '2013-10-03', '2013-10-03', '2013-10-03']
+}
+
+users = {'users_id' : [1, 2, 3, 4, 10, 11, 12],
+    'banned' : ['No', 'No', 'No', 'No', 'No', 'No', 'No'],
+    'role' : ['client', 'client', 'client', 'client', 'driver', 'driver', 'driver']
+}
+
+
+trips_df = pd.DataFrame(trips)
+users_df = pd.DataFrame(users)
+
+trips_df['request_at'] = pd.to_datetime(trips_df['request_at'])
+
+date_filter = (trips_df['request_at'] >= '2013-01-01') & (trips_df['request_at']<= '2013-12-31')
+
+status_filter = trips_df['status'] == 'completed'
+
+banned_filter = users_df['banned'] == 'No'
+
+
+filtered_trips_df = trips_df.loc[status_filter & date_filter]
+
+filtered_trips_df = trips_df.merge(users_df.loc[banned_filter], how ='inner', left_on = ['client_id', 'driver_id'], right_on = ['users_id', 'users_id'])
+
+
+print(filtered_trips_df)
