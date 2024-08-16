@@ -17,7 +17,7 @@ html_content = '''<!DOCTYPE html>
 <ul>
     <li><a href="https://www.example.com/page1">Link to Page 1</a></li>
     <li><a href="https://www.example.com/page2">Link to Page 2</a></li>
-    <li><a href="https://www.ncei.noaa.gov/data/local-climatological-data/access/2021/">Link to Search</a></li>
+    <li><a href="">Link to Search</a></li>
 </ul>
 
 <div>
@@ -54,7 +54,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
-url = 'https://www.ncei.noaa.gov/data/local-climatological-data/access/2021/'
+url = ''
 response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'html.parser')
